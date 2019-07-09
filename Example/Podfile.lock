@@ -1,0 +1,16 @@
+PODS:
+  - Leena (0.1.0)
+
+DEPENDENCIES:
+  - Leena (from `../`)
+
+EXTERNAL SOURCES:
+  Leena:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Leena: 2a256e26a3debab06e4f79eb21d78ce92ea4491d
+
+PODFILE CHECKSUM: 85942ec878c629fc4dc2ace2fd00810b89fc90d5
+
+COCOAPODS: 1.7.3
