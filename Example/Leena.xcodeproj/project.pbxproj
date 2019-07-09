@@ -29,9 +29,9 @@
 
 /* Begin PBXFileReference section */
 		1983E4A262F64D74A56EADC6 /* Pods-Leena_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leena_Tests.release.xcconfig"; path = "Target Support Files/Pods-Leena_Tests/Pods-Leena_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		37D3EDEDC53EAB3A8BD23BF5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		37D3EDEDC53EAB3A8BD23BF5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4F22EB03608931594C1CEA81 /* Pods-Leena_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leena_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Leena_Tests/Pods-Leena_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		54A470BD34EBE5600B7BAA16 /* Leena.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Leena.podspec; path = ../Leena.podspec; sourceTree = "<group>"; };
+		54A470BD34EBE5600B7BAA16 /* Leena.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Leena.podspec; path = ../Leena.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* Leena_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leena_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		9893BD3D5216923863B65CDC /* Pods-Leena_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leena_Example.release.xcconfig"; path = "Target Support Files/Pods-Leena_Example/Pods-Leena_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C5EA979473C99961693A2BEE /* Pods_Leena_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leena_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF69A683C548B6AB12D72E89 /* Pods_Leena_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leena_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8297FD187997BE1B9767641 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E8297FD187997BE1B9767641 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,6 @@
 				4F22EB03608931594C1CEA81 /* Pods-Leena_Tests.debug.xcconfig */,
 				1983E4A262F64D74A56EADC6 /* Pods-Leena_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

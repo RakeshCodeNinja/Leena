@@ -22,7 +22,7 @@ pod 'Leena'
 
 ## Author
 
-rakeshios786@gmail.com, rakesh@o2onelabs.com
+Rakesh Kumar Sharma, rakeshios786@gmail.com
 
 ## License
 
