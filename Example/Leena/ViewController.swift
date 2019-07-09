@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Leena
+
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var sampleView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        sampleView.addLongPressGesture {[weak self] (gesture) in
+            print("clicked")
+        }
     }
 
     override func didReceiveMemoryWarning() {
