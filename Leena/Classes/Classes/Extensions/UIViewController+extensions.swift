@@ -11,6 +11,18 @@ import Foundation
 import UIKit
 
 public extension UIViewController {
+    func present(_ alert: UIAlertController, completion: (() -> Void)? = nil) {
+        present(alert, animated: true, completion: completion)
+    }
+    
+    func present(_ alert: UIAlertController, _ autoDismissInterval: TimeInterval, completion: (() -> Void)? = nil) {
+        present(alert, animated: true, completion: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + autoDismissInterval) {
+                self?.dismiss(animated: true, completion: completion)
+            }
+        })
+    }
+    
     @IBInspectable
     var backgroundColor: UIColor? {
         get {
