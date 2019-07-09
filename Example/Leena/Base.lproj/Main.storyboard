@@ -26,8 +26,22 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bwu-JQ-dNW">
+                                <rect key="frame" x="16" y="627" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3dF-Wo-Xsg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bwu-JQ-dNW" secondAttribute="bottom" id="8vn-mb-drp"/>
+                            <constraint firstItem="Bwu-JQ-dNW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="G8S-xh-4Rg"/>
+                            <constraint firstAttribute="trailing" secondItem="Bwu-JQ-dNW" secondAttribute="trailing" constant="16" id="hnT-fb-kkX"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="sampleView" destination="jKT-RX-qA9" id="PBw-Po-Lqj"/>
@@ -35,6 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>

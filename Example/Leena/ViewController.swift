@@ -15,9 +15,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sampleView.addLongPressGesture {[weak self] (gesture) in
+        sampleView.addLongPressGesture { (gesture) in
             print("clicked")
         }
+        
+       
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+   
     }
 
     override func didReceiveMemoryWarning() {
