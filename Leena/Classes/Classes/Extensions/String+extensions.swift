@@ -207,7 +207,7 @@ public extension String {
         return removingPercentEncoding ?? self
     }
     
-    // EZSE : Mutating versin of urlDecoded
+    // Mutating version of urlDecoded
     mutating func urlDecode() {
         self = urlDecoded()
     }
@@ -447,6 +447,45 @@ public extension String {
         result.replaceSubrange(self.index(startIndex, offsetBy: from)..<self.index(startIndex, offsetBy: to),
                                with: String(self[self.index(startIndex, offsetBy: from)..<self.index(startIndex, offsetBy: to)]).lowercased())
         return result
+    }
+    
+    var nsString: NSString {
+        return NSString(string: self)
+    }
+    
+   // NSString lastPathComponent.
+    var lastPathComponent: String {
+        return (self as NSString).lastPathComponent
+    }
+    
+   // NSString pathExtension.
+    var pathExtension: String {
+        return (self as NSString).pathExtension
+    }
+    
+   // NSString deletingLastPathComponent.
+    var deletingLastPathComponent: String {
+        return (self as NSString).deletingLastPathComponent
+    }
+    
+   // NSString deletingPathExtension.
+    var deletingPathExtension: String {
+        return (self as NSString).deletingPathExtension
+    }
+    
+   // NSString pathComponents.
+    var pathComponents: [String] {
+        return (self as NSString).pathComponents
+    }
+    
+   // NSString appendingPathComponent(str: String)
+    func appendingPathComponent(_ str: String) -> String {
+        return (self as NSString).appendingPathComponent(str)
+    }
+    
+   // NSString appendingPathExtension(str: String)
+    func appendingPathExtension(_ str: String) -> String? {
+        return (self as NSString).appendingPathExtension(str)
     }
 }
 
