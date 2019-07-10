@@ -165,6 +165,12 @@ public extension String {
         }
     }
     
+    var fixedArabicURL: String? {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics
+            .union(CharacterSet.urlPathAllowed)
+            .union(CharacterSet.urlHostAllowed))
+    }
+    
     func height(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode?) -> CGFloat {
         var attrib: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
         if lineBreakMode != nil {
@@ -505,4 +511,55 @@ func hasSuffix(_ suffix: String) -> (_ value: String) -> Bool {
     return { (value: String) -> Bool in
         value.hasSuffix(suffix)
     }
+}
+
+
+extension String: PersianSwiftCompatible {}
+
+public extension LeenaPersianHelper where Base == String {
+    
+    var isPersianPhoneNumber: Bool {
+        return PersianSwift.PersianString.IsPersianPhoneNumber(input: self.base)
+    }
+    
+    var withPersianDigits: String {
+        return PersianSwift.PersianString.StringWithPersianDigits(from: self.base)
+    }
+    
+    var withEasternDigits: String {
+        return PersianSwift.PersianString.StringWithEasternDigits(from: self.base)
+    }
+    
+    var withFixedPersianCharacters: String {
+        return PersianSwift.PersianString.StringWithFixedPersianCharacters(from: self.base)
+    }
+    
+    var withIranRialStyle: String? {
+        return PersianSwift.PersianString.StringWithIranRialStyle(from: self.base)
+    }
+    
+    var withIranTomanStyle: String? {
+        return PersianSwift.PersianString.StringWithIranTomanStyle(from: self.base)
+    }
+    
+    var withCurrencyStyle: String? {
+        return PersianSwift.PersianString.StringWithCurrencyStyle(from: self.base)
+    }
+    
+    mutating func toEnglishDigits() {
+        self.base = self.base.lph.withEasternDigits
+    }
+    
+    mutating func toPersianDigits() {
+        self.base = self.base.lph.withPersianDigits
+    }
+    
+    mutating func fixPersianCharacters() {
+        self.base = self.base.lph.withFixedPersianCharacters
+    }
+    
+    func asPersianDate(fromGregorianFormat inputFormat: String = PersianSwift.PersianDate.DefaultInputFormat) -> String? {
+        return PersianSwift.PersianDate(from: self.base, inputFormat: inputFormat)?.getDateString()
+    }
+    
 }

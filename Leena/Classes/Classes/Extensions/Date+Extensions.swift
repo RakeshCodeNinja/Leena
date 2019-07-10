@@ -71,6 +71,10 @@ public extension Date {
         return calendar.date(byAdding: .day, value: -1, to: self) ?? Date()
     }
     
+    func asPersianDateString(dateFormat: String = "yyyy/MM/dd") -> String {
+        return DateFormatter.initialize(dateFormat: dateFormat).string(from: self)
+    }
+    
     func string(withFormat format: String = "dd/MM/yyyy HH:mm") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
@@ -378,4 +382,23 @@ public extension Date {
             return LeenaTimePassed.now
         }
     }
+}
+
+
+extension Date: PersianSwiftCompatible {}
+
+public extension LeenaPersianHelper where Base == Date {
+    
+    var asPersianDate: String {
+        return PersianSwift.PersianDate(from: self.base).getDateString()
+    }
+    
+    var asFullPersianDateTime: String {
+        return PersianSwift.PersianDate(from: self.base).getDateString(with: .ultraLongDateAndTime)
+    }
+    
+    func getPersianDateString(with format: String) -> String {
+        return PersianSwift.PersianDate(from: self.base).getDateString(with: .custom(format: format))
+    }
+    
 }

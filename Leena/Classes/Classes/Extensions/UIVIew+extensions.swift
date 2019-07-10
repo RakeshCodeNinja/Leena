@@ -174,6 +174,87 @@ public extension UIView {
         }
     }
     
+    func putShadowOnView(shadowColor:UIColor, radius:CGFloat, offset:CGSize, opacity:Float){
+        var shadowFrame = CGRect.zero // Modify this if needed
+        shadowFrame.size.width = 0.0
+        shadowFrame.size.height = 0.0
+        shadowFrame.origin.x = 0.0
+        shadowFrame.origin.y = 0.0
+        
+        let shadow = UIView(frame: shadowFrame)//[[UIView alloc] initWithFrame:shadowFrame];
+        shadow.isUserInteractionEnabled = false; // Modify this if needed
+        shadow.layer.shadowColor = shadowColor.cgColor
+        shadow.layer.shadowOffset = offset
+        shadow.layer.shadowRadius = radius
+        shadow.layer.masksToBounds = false
+        shadow.clipsToBounds = false
+        shadow.layer.shadowOpacity = opacity
+        self.superview?.insertSubview(shadow, belowSubview: self)
+        shadow.addSubview(self)
+        
+    }
+    
+    func setRoundedShadow(cornerRadius: CGFloat, fillColor: UIColor, shadowColor: UIColor, shadowOpacity: Float, shadowRadius: CGFloat, shadowOffset: CGSize) {
+        let shadowLayer = CAShapeLayer()
+        shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+        shadowLayer.fillColor = fillColor.cgColor
+        shadowLayer.shadowColor = shadowColor.cgColor
+        shadowLayer.shadowPath = shadowLayer.path
+        shadowLayer.shadowOffset = shadowOffset
+        shadowLayer.shadowOpacity = shadowOpacity
+        shadowLayer.shadowRadius = shadowRadius
+        self.layer.cornerRadius = cornerRadius
+        self.layer.insertSublayer(shadowLayer, at: 0)
+    }
+    
+    func setBorder(color: UIColor?, width: CGFloat) {
+        self.layer.borderColor = color?.cgColor
+        self.layer.borderWidth = width
+    }
+    
+    func setTransform(rotationAngle: CGFloat) {
+        self.transform = CGAffineTransform(rotationAngle: rotationAngle)
+    }
+    
+    func setTransform(scaleX: CGFloat, y scaleY: CGFloat) {
+        self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+    }
+    
+    func setTransform(translationX: CGFloat, y translationY: CGFloat) {
+        self.transform = CGAffineTransform(translationX: translationX, y: translationY)
+    }
+    
+    func setTransformToIdentity() {
+        self.transform = .identity
+    }
+    
+    func addDottedRoundedBorder(color: UIColor) {
+        if self.layer.sublayers != nil {
+            if let allLayers = self.layer.sublayers {
+                for layer in allLayers {
+                    layer.removeFromSuperlayer()
+                }
+            }
+        }
+        let dotDiameter: CGFloat = 2.0
+        let expDotSpacing: CGFloat = 5.0
+        let sss: CGSize = self.frame.size
+        let radius: CGFloat = (sss.width < sss.height) ? sss.width * 0.5 - dotDiameter * 0.5 : sss.height * 0.5 - dotDiameter * 0.5
+        let circum: CGFloat = .pi * radius * 2.0
+        let numberOfDots = Int(round(Double(circum / (dotDiameter + expDotSpacing))))
+        let dotSpacing = (circum / CGFloat(numberOfDots)) - dotDiameter
+        let line = CAShapeLayer()
+        line.frame = CGRect(x: 0, y: 0, width: sss.width, height: sss.height)
+        line.lineWidth = dotDiameter
+        line.strokeColor = color.cgColor
+        let ppp = UIBezierPath(arcCenter: CGPoint(x: sss.width * 0.5, y: sss.height * 0.5), radius: radius, startAngle: -.pi * 0.5, endAngle: .pi * 1.5, clockwise: true)
+        line.path = ppp.cgPath
+        line.fillColor = UIColor.clear.cgColor
+        line.lineCap = .round
+        line.lineDashPattern = [NSNumber(value: 0), NSNumber(value: Float(dotSpacing + dotDiameter))]
+        self.layer.addSublayer(line)
+    }
+    
     func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds

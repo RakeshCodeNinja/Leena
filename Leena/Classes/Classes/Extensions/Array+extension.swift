@@ -280,3 +280,16 @@ public extension Array where Element: NSObject {
         return copiedArray
     }
 }
+
+
+public extension Array where Element == String {
+    
+    var sortedPersianStrings: [String] {
+        return PersianSwift.PersianString.SortedPersianStringArray(from: self as [String])
+    }
+    
+    mutating func sortPersianStrings(desc: Bool) {
+        self = PersianSwift.PersianString.SortedPersianStringArray(from: self as [String], desc: desc)
+    }
+    
+}

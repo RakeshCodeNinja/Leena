@@ -15,6 +15,11 @@ public extension Calendar {
         return range(of: .day, in: .month, for: date)!.count
     }
     
+        
+    static var persian: Calendar { return Calendar(identifier: .persian) }
+        
+    
+    
 }
 
 #endif

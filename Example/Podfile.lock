@@ -1,6 +1,12 @@
 PODS:
+  - Kingfisher (4.10.1)
   - Leena (0.1.0):
-    - SwiftyJSON
+    - Kingfisher (= 4.10.1)
+    - SwiftMessages (= 7.0.0)
+    - SwiftyJSON (= 5.0.0)
+  - SwiftMessages (7.0.0):
+    - SwiftMessages/App (= 7.0.0)
+  - SwiftMessages/App (7.0.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -8,6 +14,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Kingfisher
+    - SwiftMessages
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -15,7 +23,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Leena: 4e9fd9a605ec600f57b0debac2e58ade643f518b
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Leena: 405c267a19b3662b5eb833f945319b7b51f010d3
+  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 85942ec878c629fc4dc2ace2fd00810b89fc90d5

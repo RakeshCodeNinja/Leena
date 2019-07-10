@@ -19,6 +19,11 @@ public extension UISearchBar {
         return textField
     }
     
+    func setupSearchBarTextField(_ closure: (UITextField) -> Void) {
+        guard let textField = self.value(forKey: "searchField") as? UITextField else { return }
+        closure(textField)
+    }
+    
     var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }

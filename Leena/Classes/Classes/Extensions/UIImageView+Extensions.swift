@@ -9,7 +9,27 @@
 
 #if canImport(UIKit)
 import UIKit
+import Kingfisher
+
  extension UIImageView {
+    enum ImageType: Int {
+        case original = 1
+        case compressed = 2
+        case thumbnail = 3
+    }
+    
+    func setImage(_ imageUrl: String = "", withPlaceholder: String = "", withType imageType: ImageType = .original) {
+        if URL(string: imageUrl.fixedArabicURL ?? "") != nil && !imageUrl.isEmpty {
+            let resource = ImageResource(downloadURL: URL(string: imageUrl.fixedArabicURL ?? "")!, cacheKey: imageUrl)
+            self.kf.setImage(with: resource, placeholder: UIImage(named: withPlaceholder)!)
+        } else {
+            if !withPlaceholder.isEmpty {
+                self.image = UIImage(named: withPlaceholder)
+            }
+        }
+        
+    }
+    
     func blur(withStyle style: UIBlurEffect.Style = .light) {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)

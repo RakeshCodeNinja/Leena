@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/rakeshios786/Leena.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.swift_version = '5.0'
   s.requires_arc = true
 
@@ -41,4 +41,7 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'SwiftyJSON','5.0.0'
+   s.dependency 'Kingfisher','4.10.1'
+   s.dependency 'SwiftMessages','7.0.0'
+   
 end

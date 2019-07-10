@@ -83,4 +83,27 @@ public extension UIApplication {
         }
         return base
     }
+    
+    static func removeAllNotificationsAndBadge() {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
+    static var statusBarView: UIView? {
+        return UIApplication.shared.value(forKey: "statusBar") as? UIView
+    }
+    
+    @available(iOS 10.0, *)
+    static func open(url: URL, completionHandler: ((Bool) -> Void)? = nil) {
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: completionHandler)
+    }
+    
+    @available(iOS 10.0, *)
+    static func tryToOpen(url: URL, onFailed failureHandler: (() -> Void)? = nil) {
+        guard UIApplication.shared.canOpenURL(url) else {
+            failureHandler?()
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 }
