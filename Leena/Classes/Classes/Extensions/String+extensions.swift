@@ -25,6 +25,11 @@ public extension String {
         self = nFormatter.string(from: NSNumber(value: value))!
     }
     
+    func containsOnlyCharactersIn(matchCharacters: String) -> Bool {
+        let disallowedCharacterSet = CharacterSet(charactersIn: matchCharacters).inverted
+        return self.rangeOfCharacter(from: disallowedCharacterSet) == nil
+    }
+    
     var length: Int {
         return self.count
     }
