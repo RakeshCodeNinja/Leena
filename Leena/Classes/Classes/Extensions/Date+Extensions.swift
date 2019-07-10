@@ -356,7 +356,7 @@ public extension Date {
         }
     }
     
-    public func timePassed() -> LeenaTimePassed {
+     func timePassed() -> LeenaTimePassed {
         
         let date = Date()
         let calendar = Calendar.autoupdatingCurrent

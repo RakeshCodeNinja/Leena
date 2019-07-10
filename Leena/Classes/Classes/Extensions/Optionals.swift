@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 //MARK:- PROTOCOL
 protocol OptionalType { init() }
@@ -35,4 +36,22 @@ prefix operator /
 prefix func /<T: OptionalType>( value: T?) -> T {
     guard let validValue = value else { return T() }
     return validValue
+}
+
+infix operator =>
+infix operator =|
+infix operator =<
+
+typealias OptionalJSON = [String : JSON]?
+
+func =>(key : String, json : OptionalJSON) -> String?{
+    return json?[key]?.stringValue
+}
+
+func =<(key : String, json : OptionalJSON) -> [String : JSON]?{
+    return json?[key]?.dictionaryValue
+}
+
+func =|(key : String, json : OptionalJSON) -> [JSON]?{
+    return json?[key]?.arrayValue
 }
