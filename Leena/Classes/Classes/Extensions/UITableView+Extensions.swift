@@ -23,6 +23,57 @@ public extension UITableView {
 }
 
 public extension UITableView {
+    func registerIDCells<T: UITableViewCell>(cellTypes: [T.Type]) {
+        cellTypes.forEach { self.registerIDCell(cellType: $0) }
+    }
+    
+    func registerIDCells<T: UITableViewCell>(cellClasses: [T.Type]) {
+        cellClasses.forEach { self.registerIDCell(cellClass: $0) }
+    }
+    
+    func registerIDCell<T: UITableViewCell>(cellType: T.Type) {
+        let nib = UINib(nibName: cellType.identifier, bundle: nil)
+        self.register(nib, forCellReuseIdentifier: cellType.identifier)
+    }
+    
+    func registerIDCell<T: UITableViewCell>(cellClass: T.Type) {
+        self.register(cellClass, forCellReuseIdentifier: cellClass.identifier)
+    }
+    
+    func dequeueReusableIDCell<T: UITableViewCell>(_ type: T.Type, for indexPath: IndexPath) -> T {
+        return self.dequeueReusableCell(withIdentifier: type.identifier, for: indexPath) as! T
+    }
+    
+    func removeExtraSeparatorLines() {
+        self.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func setHeights(rowHeight: CGFloat, estimatedRowHeight: CGFloat) {
+        self.rowHeight = rowHeight
+        self.estimatedRowHeight = estimatedRowHeight
+    }
+    
+    func setAutomaticDimensionHeights() {
+        self.rowHeight = UITableView.automaticDimension
+        self.estimatedRowHeight = UITableView.automaticDimension
+    }
+    
+    
+    func setDelegateAndDataSource<T: UITableViewDelegate & UITableViewDataSource>(to object: T) {
+        self.delegate = object
+        self.dataSource = object
+    }
+    
+    func removeBackgroundView() {
+        self.backgroundView = nil
+    }
+    
+    func reloadDataWithAutoSizingCellWorkAround() {
+        self.reloadData()
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        self.reloadData()
+    }
     
     func numberOfRows() -> Int {
         var section = 0
@@ -67,20 +118,6 @@ public extension UITableView {
         setContentOffset(CGPoint.zero, animated: animated)
     }
     
-    func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type) -> T {
-        guard let cell = dequeueReusableCell(withIdentifier: String(describing: name)) as? T else {
-            fatalError("Couldn't find UITableViewCell for \(String(describing: name)), make sure the cell is registered with table view")
-        }
-        return cell
-    }
-    
-    func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withIdentifier: String(describing: name), for: indexPath) as? T else {
-            fatalError("Couldn't find UITableViewCell for \(String(describing: name)), make sure the cell is registered with table view")
-        }
-        return cell
-    }
-    
     func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(withClass name: T.Type) -> T {
         guard let headerFooterView = dequeueReusableHeaderFooterView(withIdentifier: String(describing: name)) as? T else {
             fatalError("Couldn't find UITableViewHeaderFooterView for \(String(describing: name)), make sure the view is registered with table view")
@@ -123,6 +160,10 @@ public extension UITableView {
         guard indexPath.section < numberOfSections else { return }
         guard indexPath.row < numberOfRows(inSection: indexPath.section) else { return }
         scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
+    }
+
+    func heightOfVisibleCells() -> CGFloat {
+        return self.visibleCells.map({ $0.frame.height }).reduce(0, +)
     }
     
 }

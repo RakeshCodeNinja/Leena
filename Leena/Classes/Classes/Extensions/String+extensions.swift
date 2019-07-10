@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import CommonCrypto
 
 public extension String {
     
@@ -82,6 +83,62 @@ public extension String {
             return nil
         }
     }
+    
+    var base64Encoded: String {
+        return Data(self.utf8).base64EncodedString()
+    }
+    
+    var base64Decoded: String? {
+        guard let data = Data(base64Encoded: self) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+    
+    var range: NSRange {
+        return NSRange(location: 0, length: count)
+    }
+    
+    var sHA512String: String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
+        if let data = self.data(using: String.Encoding.utf8) {
+            let value = data as NSData
+            CC_SHA512(value.bytes, CC_LONG(data.count), &digest)
+        }
+        var digestHex = ""
+        for index in 0..<Int(CC_SHA512_DIGEST_LENGTH) {
+            digestHex += String(format: "%02x", digest[index])
+        }
+        return digestHex.uppercased()
+    }
+    
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: Data(utf8),
+                                          options: [.documentType: NSAttributedString.DocumentType.html,
+                                                    .characterEncoding: String.Encoding.utf8.rawValue],
+                                          documentAttributes: nil)
+        } catch {
+            print("error: ", error)
+            return nil
+        }
+    }
+    
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
+    
+    var id_MD5String: String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
+        if let data = self.data(using: String.Encoding.utf8) {
+            let value = data as NSData
+            CC_MD5(value.bytes, CC_LONG(data.count), &digest)
+        }
+        var digestHex = ""
+        for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
+            digestHex += String(format: "%02x", digest[index])
+        }
+        return digestHex.uppercased()
+    }
+    
     
     func trimmed() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -460,8 +517,21 @@ public extension String {
         return result
     }
     
+    func generateQRCodeFromString(scale: CGFloat = 3) -> UIImage? {
+        let base64Data = self.data(using: .ascii)
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+        filter.setValue(base64Data, forKey: "inputMessage")
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        guard let output = filter.outputImage?.transformed(by: transform) else { return nil }
+        return UIImage(ciImage: output)
+    }
+    
     var nsString: NSString {
         return NSString(string: self)
+    }
+    
+    func replace(_ target: String, withString: String) -> String {
+        return self.replacingOccurrences(of: target, with: withString)
     }
     
    // NSString lastPathComponent.

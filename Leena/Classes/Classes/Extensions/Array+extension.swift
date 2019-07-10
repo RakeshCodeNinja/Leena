@@ -7,6 +7,7 @@
 //  
 //
 
+#if os(iOS)
 import Foundation
 
 func ==<T: Equatable>(lhs: [T]?, rhs: [T]?) -> Bool {
@@ -293,3 +294,5 @@ public extension Array where Element == String {
     }
     
 }
+
+#endif

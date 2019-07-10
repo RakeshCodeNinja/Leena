@@ -32,5 +32,15 @@ public extension Double {
         }
     }
     
+    var asNSNumber: NSNumber {
+        return NSNumber(value: self)
+    }
+    
+    func rounded(toPlaces places: Int) -> Double {
+        guard places >= 0 else { return self }
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+    
     
 }

@@ -15,8 +15,19 @@ public extension UICollectionView {
         return indexPathForLastItem(inSection: lastSection)
     }
     
+    func scrollTo(currentIndex: Int) {
+        let indexPath = IndexPath(row: currentIndex, section: 0)
+        if self.numberOfItems(inSection: 0) > currentIndex {
+            self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+    }
+    
     var lastSection: Int {
         return numberOfSections > 0 ? numberOfSections - 1 : 0
+    }
+    
+    func removeBackgroundView() {
+        self.backgroundView = nil
     }
     
     func numberOfItems() -> Int {

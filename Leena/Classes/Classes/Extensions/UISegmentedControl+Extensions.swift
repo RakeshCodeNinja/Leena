@@ -35,5 +35,9 @@ public extension UISegmentedControl {
             }
         }
     }
+    
+    func setFont(_ font: UIFont) {
+        self.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+    }
 }
 #endif

@@ -180,5 +180,33 @@ public extension UIImage {
         
         self.init(cgImage: aCgImage)
     }
+    
+    func imageWithGradient(from beginColor: UIColor, to endColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContext(self.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        self.draw(at: CGPoint(x: 0, y: 0))
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let locations:[CGFloat] = [0.7, 1.0]
+        
+        let bottom = endColor.withAlphaComponent(0.5).cgColor
+        let top = beginColor.cgColor
+        
+        let colors = [top, bottom] as CFArray
+        
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations)
+        
+        let startPoint = CGPoint(x: self.size.width/2, y: 0)
+        let endPoint = CGPoint(x: self.size.width/2, y: self.size.height)
+        
+        context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image!
+    }
 }
 #endif

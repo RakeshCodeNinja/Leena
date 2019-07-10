@@ -10,6 +10,10 @@
 #if canImport(UIKit)
 import UIKit
 public extension UINavigationController {
+    func getReferenceTo<ViewController: UIViewController>(viewController: ViewController.Type) -> ViewController? {
+        return self.viewControllers.first { $0 is ViewController } as? ViewController
+    }
+    
     func popViewController(animated: Bool = true, _ completion: (() -> Void)? = nil) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)

@@ -7,6 +7,7 @@
 //  
 //
 
+#if os(iOS)
 import Foundation
 
 public extension BinaryFloatingPoint {
@@ -15,3 +16,5 @@ public extension BinaryFloatingPoint {
         return (self * factor).rounded(rule) / factor
     }
 }
+
+#endif
