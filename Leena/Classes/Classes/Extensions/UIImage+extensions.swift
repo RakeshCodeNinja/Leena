@@ -12,7 +12,7 @@ import UIKit
 
 public extension UIImage {
     var bytesSize: Int {
-        return UIImageJPEGRepresentation(self,1)?.count ?? 0
+        return self.jpegData(compressionQuality: 1)?.count ?? 0
     }
     
     var kilobytesSize: Int {
@@ -33,7 +33,7 @@ public extension UIImage {
     }
     
     func compressedData(quality: CGFloat = 0.5) -> Data? {
-        return UIImageJPEGRepresentation(self,quality)
+        return self.jpegData(compressionQuality: quality)
     }
     
     func cropped(to rect: CGRect) -> UIImage {

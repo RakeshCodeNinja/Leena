@@ -321,7 +321,7 @@ public extension UIView {
         isUserInteractionEnabled = true
     }
     
-    func addSwipeGesture(direction: UISwipeGestureRecognizerDirection, numberOfTouches: Int = 1, target: AnyObject, action: Selector) {
+    func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, numberOfTouches: Int = 1, target: AnyObject, action: Selector) {
         let swipe = UISwipeGestureRecognizer(target: target, action: action)
         swipe.direction = direction
         swipe.numberOfTouchesRequired = numberOfTouches
@@ -329,7 +329,7 @@ public extension UIView {
         isUserInteractionEnabled = true
     }
     
-    func addSwipeGesture(direction: UISwipeGestureRecognizerDirection, numberOfTouches: Int = 1, action: ((UISwipeGestureRecognizer) -> Void)?) {
+    func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, numberOfTouches: Int = 1, action: ((UISwipeGestureRecognizer) -> Void)?) {
         let swipe = LeenaSwipeGesture(direction: direction, fingerCount: numberOfTouches, action: action)
         addGestureRecognizer(swipe)
         isUserInteractionEnabled = true

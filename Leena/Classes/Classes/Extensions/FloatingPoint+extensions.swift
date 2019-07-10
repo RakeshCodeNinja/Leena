@@ -33,10 +33,6 @@ extension FloatingPoint {
         self = ceiled(toPlaces: places)
     }
     
-    public static func random() -> Float {
-        return Float(arc4random()) / 0xFFFFFFFF
-    }
-    
     var abs: Self {
         return Swift.abs(self)
     }
@@ -49,7 +45,4 @@ extension FloatingPoint {
         return self < 0
     }
     
-    public static func random(within: Range<Float>) -> Float {
-        return Float.random() * (within.upperBound - within.lowerBound) + within.lowerBound
-    }
 }

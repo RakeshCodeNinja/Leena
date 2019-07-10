@@ -166,11 +166,11 @@ public extension String {
     }
     
     func height(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode?) -> CGFloat {
-        var attrib: [NSAttributedStringKey: Any] = [NSAttributedStringKey.font: font]
+        var attrib: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
         if lineBreakMode != nil {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineBreakMode = lineBreakMode!
-            attrib.updateValue(paragraphStyle, forKey: NSAttributedStringKey.paragraphStyle)
+            attrib.updateValue(paragraphStyle, forKey: NSAttributedString.Key.paragraphStyle)
         }
         let size = CGSize(width: width, height: CGFloat(Double.greatestFiniteMagnitude))
         return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrib, context: nil).height)
@@ -190,7 +190,7 @@ public extension String {
         }
         let attrText = NSMutableAttributedString(string: self)
         for range in ranges {
-            attrText.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+            attrText.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
         }
         return attrText
     }

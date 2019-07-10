@@ -112,12 +112,12 @@ public extension Array where Element: Equatable {
     
     ///   Checks if the main array contains the parameter array
     func contains(_ array: [Element]) -> Bool {
-        return array.testAll { self.index(of: $0) ?? -1 >= 0 }
+        return array.testAll { self.firstIndex(of: $0) ?? -1 >= 0 }
     }
     
     ///   Checks if self contains a list of items.
     func contains(_ elements: Element...) -> Bool {
-        return elements.testAll { self.index(of: $0) ?? -1 >= 0 }
+        return elements.testAll { self.firstIndex(of: $0) ?? -1 >= 0 }
     }
     
     ///   Returns the indexes of the object
@@ -132,7 +132,7 @@ public extension Array where Element: Equatable {
     
     ///   Removes the first given object
     mutating func removeFirst(_ element: Element) {
-        guard let index = index(of: element) else { return }
+        guard let index = firstIndex(of: element) else { return }
         self.remove(at: index)
     }
     
@@ -239,7 +239,7 @@ public extension Array where Element: Equatable {
     
     // Remove first collection element that is equal to the given `object`:
     mutating func remove(object: Element) {
-        if let index = index(of: object) {
+        if let index = firstIndex(of: object) {
             remove(at: index)
         }
     }

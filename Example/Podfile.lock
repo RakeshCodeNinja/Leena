@@ -1,15 +1,22 @@
 PODS:
-  - Leena (0.1.0)
+  - Leena (0.1.0):
+    - SwiftyJSON
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Leena (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   Leena:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Leena: 2a256e26a3debab06e4f79eb21d78ce92ea4491d
+  Leena: 4e9fd9a605ec600f57b0debac2e58ade643f518b
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 85942ec878c629fc4dc2ace2fd00810b89fc90d5
 
