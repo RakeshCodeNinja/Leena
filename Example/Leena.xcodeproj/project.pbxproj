@@ -15,6 +15,10 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		66A4FB3AFC0A8B51A3508D7E /* Pods_Leena_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF69A683C548B6AB12D72E89 /* Pods_Leena_Tests.framework */; };
 		82309837402F5708E55B520B /* Pods_Leena_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EA979473C99961693A2BEE /* Pods_Leena_Example.framework */; };
+		BA78830122DC51540051E293 /* ArrayExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78830022DC51540051E293 /* ArrayExamplesViewController.swift */; };
+		BA78830322DC52F80051E293 /* StoryBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78830222DC52F80051E293 /* StoryBoardHelper.swift */; };
+		BA78830822DC57E50051E293 /* ArrayOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78830722DC57E50051E293 /* ArrayOptionsViewController.swift */; };
+		BA78830A22DC64040051E293 /* ArrayManupulateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78830922DC64040051E293 /* ArrayManupulateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7E5FC1C549445F412D3C4615 /* Pods-Leena_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leena_Example.debug.xcconfig"; path = "Target Support Files/Pods-Leena_Example/Pods-Leena_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9893BD3D5216923863B65CDC /* Pods-Leena_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leena_Example.release.xcconfig"; path = "Target Support Files/Pods-Leena_Example/Pods-Leena_Example.release.xcconfig"; sourceTree = "<group>"; };
+		BA78830022DC51540051E293 /* ArrayExamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExamplesViewController.swift; sourceTree = "<group>"; };
+		BA78830222DC52F80051E293 /* StoryBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardHelper.swift; sourceTree = "<group>"; };
+		BA78830722DC57E50051E293 /* ArrayOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOptionsViewController.swift; sourceTree = "<group>"; };
+		BA78830922DC64040051E293 /* ArrayManupulateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayManupulateViewController.swift; sourceTree = "<group>"; };
 		C5EA979473C99961693A2BEE /* Pods_Leena_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leena_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF69A683C548B6AB12D72E89 /* Pods_Leena_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leena_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8297FD187997BE1B9767641 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -99,6 +107,8 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				BA78830422DC53A60051E293 /* HelperClasses */,
+				BA78830B22DC640D0051E293 /* ArrayExtensionUses */,
 			);
 			name = "Example for Leena";
 			path = Leena;
@@ -157,6 +167,24 @@
 				CF69A683C548B6AB12D72E89 /* Pods_Leena_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA78830422DC53A60051E293 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				BA78830222DC52F80051E293 /* StoryBoardHelper.swift */,
+			);
+			name = HelperClasses;
+			sourceTree = "<group>";
+		};
+		BA78830B22DC640D0051E293 /* ArrayExtensionUses */ = {
+			isa = PBXGroup;
+			children = (
+				BA78830722DC57E50051E293 /* ArrayOptionsViewController.swift */,
+				BA78830022DC51540051E293 /* ArrayExamplesViewController.swift */,
+				BA78830922DC64040051E293 /* ArrayManupulateViewController.swift */,
+			);
+			name = ArrayExtensionUses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,8 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA78830122DC51540051E293 /* ArrayExamplesViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				BA78830322DC52F80051E293 /* StoryBoardHelper.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				BA78830A22DC64040051E293 /* ArrayManupulateViewController.swift in Sources */,
+				BA78830822DC57E50051E293 /* ArrayOptionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
